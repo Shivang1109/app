@@ -140,7 +140,6 @@ export default function BudgetGame() {
           </div>
         </div>
 
-        {/* Result Card */}
         {showResult && result && (
           <div className={`rounded-2xl shadow-sm border p-6 mb-6 ${
             result.level === 'high' ? 'bg-green-50 border-green-200' :
