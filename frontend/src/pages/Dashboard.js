@@ -164,42 +164,9 @@ export default function Dashboard() {
             Learning Modules
           </h2>
           <div className="flex flex-col gap-4">
-            {modules.map((module) => {
-              const Icon = module.icon;
-              return (
-                <div
-                  key={module.id}
-                  onClick={() => navigate(module.path)}
-                  className="bg-white rounded-2xl shadow-sm border border-green-100 p-5 hover:shadow-md hover:border-green-200 transition-all duration-200 cursor-pointer group"
-                  data-testid={module.testId}
-                >
-                  <div className="flex items-start gap-4">
-                    <div className={`p-3 bg-gradient-to-br ${module.color} rounded-xl shadow-lg flex-shrink-0`}>
-                      <Icon className="w-6 h-6 text-white" strokeWidth={2} />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-bold text-green-900 mb-1 group-hover:text-green-700 transition-colors" style={{ fontFamily: 'Manrope, sans-serif' }}>
-                        {module.title}
-                      </h3>
-                      <p className="text-gray-600 text-sm mb-2" style={{ fontFamily: 'Inter, sans-serif' }}>
-                        {module.description}
-                      </p>
-                      <div className="flex items-center gap-2">
-                        <div className="flex-1 h-2 bg-green-100 rounded-full overflow-hidden">
-                          <div 
-                            className={`h-full bg-gradient-to-r ${module.color} transition-all duration-500`}
-                            style={{ width: `${Math.min((module.score / 100) * 100, 100)}%` }}
-                          ></div>
-                        </div>
-                        <span className="text-sm font-bold text-green-900" style={{ fontFamily: 'Manrope, sans-serif' }}>
-                          {module.score} pts
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+            <ModuleCard module={modules[0]} onNavigate={() => navigate(modules[0].path)} />
+            <ModuleCard module={modules[1]} onNavigate={() => navigate(modules[1].path)} />
+            <ModuleCard module={modules[2]} onNavigate={() => navigate(modules[2].path)} />
           </div>
         </div>
 
