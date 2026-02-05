@@ -203,52 +203,30 @@ export default function FraudQuiz() {
 
         {/* Options */}
         <div className="space-y-3 mb-6">
-          {question.options.map((option) => {
-            const isSelected = selectedAnswer?.id === option.id;
-            const showCorrect = showResult && option.correct;
-            const showIncorrect = showResult && isSelected && !option.correct;
-            
-            let borderClass = 'border-green-100 hover:border-green-300 hover:shadow-md';
-            let bgClass = 'bg-white';
-            if (showCorrect) {
-              borderClass = 'border-green-500';
-              bgClass = 'bg-green-50';
-            } else if (showIncorrect) {
-              borderClass = 'border-red-500';
-              bgClass = 'bg-red-50';
-            } else if (isSelected) {
-              borderClass = 'border-green-500 shadow-md';
-            }
-            
-            let circleClass = 'bg-green-100 text-green-700';
-            if (showCorrect) {
-              circleClass = 'bg-green-500 text-white';
-            } else if (showIncorrect) {
-              circleClass = 'bg-red-500 text-white';
-            } else if (isSelected) {
-              circleClass = 'bg-green-700 text-white';
-            }
-            
-            return (
-              <div
-                key={option.id}
-                onClick={() => handleSelectAnswer(option)}
-                className={`${bgClass} rounded-2xl shadow-sm border-2 p-4 cursor-pointer transition-all duration-200 ${borderClass}`}
-                data-testid={`quiz-option-${option.id}`}
-              >
-                <div className="flex items-center gap-3">
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-bold ${circleClass}`} style={{ fontFamily: 'Manrope, sans-serif' }}>
-                    {showCorrect ? <Check className="w-5 h-5" strokeWidth={3} /> :
-                     showIncorrect ? <X className="w-5 h-5" strokeWidth={3} /> :
-                     option.id.toUpperCase()}
-                  </div>
-                  <p className="flex-1 text-gray-900" style={{ fontFamily: 'Inter, sans-serif' }}>
-                    {option.text}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
+          <QuizOption 
+            option={question.options[0]}
+            isSelected={selectedAnswer?.id === question.options[0].id}
+            showResult={showResult}
+            onSelect={() => handleSelectAnswer(question.options[0])}
+          />
+          <QuizOption 
+            option={question.options[1]}
+            isSelected={selectedAnswer?.id === question.options[1].id}
+            showResult={showResult}
+            onSelect={() => handleSelectAnswer(question.options[1])}
+          />
+          <QuizOption 
+            option={question.options[2]}
+            isSelected={selectedAnswer?.id === question.options[2].id}
+            showResult={showResult}
+            onSelect={() => handleSelectAnswer(question.options[2])}
+          />
+          <QuizOption 
+            option={question.options[3]}
+            isSelected={selectedAnswer?.id === question.options[3].id}
+            showResult={showResult}
+            onSelect={() => handleSelectAnswer(question.options[3])}
+          />
         </div>
 
         {showResult && (
