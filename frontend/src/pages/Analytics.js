@@ -112,6 +112,14 @@ export default function Analytics() {
           <div className="space-y-4">
             {modules.map((module, idx) => {
               const percentage = ((module.score / module.maxScore) * 100).toFixed(0);
+              
+              let gradientClass = 'bg-gradient-to-r from-green-500 to-green-600';
+              if (module.color === 'blue') {
+                gradientClass = 'bg-gradient-to-r from-blue-500 to-blue-600';
+              } else if (module.color === 'red') {
+                gradientClass = 'bg-gradient-to-r from-red-500 to-red-600';
+              }
+              
               return (
                 <div 
                   key={idx} 
@@ -133,11 +141,7 @@ export default function Analytics() {
                   </div>
                   <div className="h-3 rounded-full bg-green-100 overflow-hidden">
                     <div 
-                      className={`h-full transition-all duration-500 ${
-                        module.color === 'green' ? 'bg-gradient-to-r from-green-500 to-green-600' :
-                        module.color === 'blue' ? 'bg-gradient-to-r from-blue-500 to-blue-600' :
-                        'bg-gradient-to-r from-red-500 to-red-600'
-                      }`}
+                      className={`h-full transition-all duration-500 ${gradientClass}`}
                       style={{ width: `${percentage}%` }}
                     ></div>
                   </div>
