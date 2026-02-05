@@ -206,7 +206,6 @@ export default function FraudQuiz() {
           })}
         </div>
 
-        {/* Explanation Card */}
         {showResult && (
           <div className={`rounded-2xl shadow-sm border p-5 mb-6 ${
             selectedAnswer?.correct 
