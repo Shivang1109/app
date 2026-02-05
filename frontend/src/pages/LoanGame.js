@@ -104,26 +104,31 @@ export default function LoanGame() {
             const isSelected = selectedOption?.id === option.id;
             const showFeedback = showResult && isSelected;
             
+            let borderClass = isSelected ? 'border-green-500 shadow-md' : 'border-green-100 hover:border-green-300 hover:shadow-md';
+            
+            let iconBgClass = 'bg-red-100';
+            let iconColorClass = 'text-red-700';
+            if (option.color === 'green') {
+              iconBgClass = 'bg-green-100';
+              iconColorClass = 'text-green-700';
+            } else if (option.color === 'blue') {
+              iconBgClass = 'bg-blue-100';
+              iconColorClass = 'text-blue-700';
+            }
+            
+            let feedbackBgClass = option.points > 0 ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200';
+            let feedbackTextClass = option.points > 0 ? 'text-green-900' : 'text-red-900';
+            
             return (
               <div
                 key={option.id}
                 onClick={() => handleSelect(option)}
-                className={`bg-white rounded-2xl shadow-sm border-2 p-5 cursor-pointer transition-all duration-200 ${
-                  isSelected 
-                    ? 'border-green-500 shadow-md' 
-                    : 'border-green-100 hover:border-green-300 hover:shadow-md'
-                }`}
+                className={`bg-white rounded-2xl shadow-sm border-2 p-5 cursor-pointer transition-all duration-200 ${borderClass}`}
                 data-testid={`loan-option-${option.id}`}
               >
                 <div className="flex items-start gap-4">
-                  <div className={`p-3 rounded-xl flex-shrink-0 ${
-                    option.color === 'green' ? 'bg-green-100' :
-                    option.color === 'blue' ? 'bg-blue-100' : 'bg-red-100'
-                  }`}>
-                    <Icon className={`w-6 h-6 ${
-                      option.color === 'green' ? 'text-green-700' :
-                      option.color === 'blue' ? 'text-blue-700' : 'text-red-700'
-                    }`} strokeWidth={2} />
+                  <div className={`p-3 rounded-xl flex-shrink-0 ${iconBgClass}`}>
+                    <Icon className={`w-6 h-6 ${iconColorClass}`} strokeWidth={2} />
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-bold text-green-900 mb-1" style={{ fontFamily: 'Manrope, sans-serif' }}>
@@ -141,12 +146,8 @@ export default function LoanGame() {
                       ))}
                     </ul>
                     {showFeedback && (
-                      <div className={`mt-3 p-3 rounded-xl ${
-                        option.points > 0 ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'
-                      }`}>
-                        <p className={`text-sm font-medium ${
-                          option.points > 0 ? 'text-green-900' : 'text-red-900'
-                        }`} style={{ fontFamily: 'Inter, sans-serif' }}>
+                      <div className={`mt-3 p-3 rounded-xl ${feedbackBgClass}`}>
+                        <p className={`text-sm font-medium ${feedbackTextClass}`} style={{ fontFamily: 'Inter, sans-serif' }}>
                           {option.feedback}
                         </p>
                       </div>
