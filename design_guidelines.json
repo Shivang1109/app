@@ -1,0 +1,164 @@
+{
+  "identity": {
+    "persona": "E1",
+    "philosophy": "Fusion over Imitation. Organic & Earthy Archetype. Mobile-first, tactile, and trustworthy.",
+    "tone": "Encouraging, Simple, Professional, Gamified."
+  },
+  "theme": {
+    "mode": "light",
+    "primary_color": "#15803d",
+    "secondary_color": "#d97706",
+    "background_color": "#f0fdf4",
+    "surface_color": "#ffffff",
+    "text_primary": "#1a2e05",
+    "text_secondary": "#4b5563"
+  },
+  "typography": {
+    "headings": {
+      "font_family": "Manrope, sans-serif",
+      "weights": ["600", "700", "800"],
+      "usage": "Use for all section titles, card headers, and score displays."
+    },
+    "body": {
+      "font_family": "Inter, sans-serif",
+      "weights": ["400", "500"],
+      "usage": "Use for instructions, descriptions, and form labels."
+    }
+  },
+  "colors": {
+    "palette": {
+      "primary": {
+        "DEFAULT": "#15803d",
+        "foreground": "#ffffff",
+        "50": "#f0fdf4",
+        "100": "#dcfce7",
+        "200": "#bbf7d0",
+        "300": "#86efac",
+        "400": "#4ade80",
+        "500": "#22c55e",
+        "600": "#16a34a",
+        "700": "#15803d",
+        "800": "#166534",
+        "900": "#14532d"
+      },
+      "secondary": {
+        "DEFAULT": "#d97706",
+        "foreground": "#ffffff",
+        "50": "#fffbeb",
+        "100": "#fef3c7",
+        "200": "#fde68a",
+        "300": "#fcd34d",
+        "400": "#fbbf24",
+        "500": "#f59e0b",
+        "600": "#d97706",
+        "700": "#b45309",
+        "800": "#92400e",
+        "900": "#78350f"
+      },
+      "accent": {
+        "DEFAULT": "#eab308",
+        "foreground": "#422006"
+      },
+      "background": "#f0fdf4",
+      "card": "#ffffff",
+      "text": "#1a2e05",
+      "muted": "#64748b",
+      "border": "#e2e8f0"
+    }
+  },
+  "layout": {
+    "container": "max-w-md mx-auto min-h-screen bg-green-50/50 shadow-2xl overflow-hidden relative",
+    "spacing": {
+      "page_padding": "p-6",
+      "card_padding": "p-6",
+      "gap": "gap-4"
+    },
+    "grid": {
+      "dashboard": "grid grid-cols-2 gap-4",
+      "modules": "flex flex-col gap-4"
+    }
+  },
+  "components": {
+    "Card": {
+      "style": "bg-white rounded-2xl shadow-sm border border-green-100 overflow-hidden transition-all duration-200 hover:shadow-md hover:border-green-200",
+      "usage": "Used for all modules, metrics, and game containers."
+    },
+    "Button": {
+      "primary": "bg-green-700 hover:bg-green-800 text-white rounded-full px-6 py-3 font-bold shadow-lg shadow-green-700/20 transition-transform active:scale-95",
+      "secondary": "bg-amber-100 hover:bg-amber-200 text-amber-900 rounded-full px-6 py-3 font-bold transition-transform active:scale-95",
+      "outline": "border-2 border-green-700 text-green-700 hover:bg-green-50 rounded-full px-6 py-3 font-bold"
+    },
+    "Input": {
+      "style": "bg-white border-2 border-green-100 focus:border-green-500 rounded-xl px-4 py-3 text-lg w-full outline-none transition-colors"
+    },
+    "Progress": {
+      "style": "h-4 rounded-full bg-green-100 overflow-hidden",
+      "indicator": "h-full bg-gradient-to-r from-green-500 to-green-600 transition-all duration-500 ease-out"
+    }
+  },
+  "visual_enhancers": {
+    "shadows": "shadow-[0_8px_30px_rgb(0,0,0,0.04)]",
+    "borders": "border border-green-100",
+    "gradients": "bg-gradient-to-br from-green-50 to-emerald-50",
+    "textures": "Use subtle noise or grain on the main background if possible."
+  },
+  "media": {
+    "images": {
+      "hero_background": {
+        "url": "https://images.unsplash.com/photo-1759155895472-c4fd4716b158?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "alt": "Lush green agriculture field",
+        "usage": "Use as the background for the Welcome/Profile setup screen with an overlay."
+      },
+      "gamification_coins": {
+        "url": "https://images.unsplash.com/photo-1624365166419-d5d56ee31817?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "alt": "Gold coins pile",
+        "usage": "Use for the 'Total Score' or 'Wealth' metric card icon."
+      }
+    },
+    "icons": {
+      "library": "lucide-react",
+      "style": "Stroke width 2px, rounded caps. Use Green-700 for primary icons, Amber-600 for rewards."
+    }
+  },
+  "gamification": {
+    "score_display": "Large, bold numbers (text-4xl) with the coin icon next to it.",
+    "feedback": "Use 'Sonner' toasts for instant feedback on answers.",
+    "animations": "Animate score changes. Use 'framer-motion' for card entrances."
+  },
+  "accessibility": {
+    "contrast": "Ensure text is #1a2e05 on light backgrounds. Use #ffffff text on Green-700 buttons.",
+    "touch_targets": "All interactive elements must be at least 44px height.",
+    "labels": "All inputs must have visible labels."
+  },
+  "instructions_to_main_agent": [
+    "Implement the 'Profile Setup' as a step-by-step wizard.",
+    "The Dashboard should look like a 'Mission Control' for the farm.",
+    "Use the 'Lush Green Field' image as a subtle background pattern or header image.",
+    "The 'Loan Decision Game' should feel like a card game (Swipe or Select).",
+    "The 'Budget Challenge' must use a slider component.",
+    "Use 'localStorage' to persist the user profile and scores.",
+    "Ensure the app is fully responsive and looks native on mobile.",
+    "Use 'lucide-react' for all icons (Sprout, Tractor, Coins, Shield, TrendingUp).",
+    "Do NOT use default shadcn styles. Override them with the 'rounded-2xl' and 'border-green-100' styles defined here."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "Dark colors look good when used independently without gradients. DO NOT use dark colors as gradients",
+    "Don't make generic centered layouts, simplistic gradients, and uniform styling.",
+    "Create depth through layered design elements with z-index hierarchy",
+    "Use glass-morphism effects with backdrop filters (12-24px blur)",
+    "You MUST NOT apply universal transition. Eg: transition: all. This results in breaking transforms. Always add transitions for specific interactive elements like button, input excluding transforms",
+    "You MUST NOT center align the app container, ie do not add .App { text-align: center; } in the css file. This disrupts the human natural reading flow of text",
+    "Always use modern button styles like pill-shaped, or sharp button with interaction animations & color relevant to the app style",
+    "NEVER: use AI assistant Emoji characters like 🤖🧠💭💡🔮🎯📚🎭🎬🎪🎉🎊🎁🎀🎂🍰🎈🎨🎰💰💵💳🏦💎🪙💸🤑📊📈📉💹🔢🏆🥇 etc for icons.",
+    "Every interaction needs micro-animations - hover states, transitions, parallax effects, and entrance animations. Static = dead.",
+    "Use 2-3x more spacing than feels comfortable. Cramped designs look cheap.",
+    "Subtle grain textures, noise overlays, custom cursors, selection states, and loading animations: separates good from extraordinary.",
+    "Main agent relies on these image URLs. Missing categories (especially sponsor logos) = main agent will use placeholder text which is FORBIDDEN",
+    "Prioritize using pre-existing components from src/components/ui when applicable",
+    "Create new components that match the style and conventions of existing components when needed",
+    "Examine existing components to understand the project's component patterns before creating new ones",
+    "Components MUST use named exports (export const ComponentName = ...)",
+    "Pages MUST use default exports (export default function PageName() {...})",
+    "Use sonner for toasts"
+  ]
+}
