@@ -163,59 +163,9 @@ export default function Analytics() {
             Module Progress
           </h2>
           <div className="space-y-4">
-            {modules.map((module, idx) => {
-              const percentage = ((module.score / module.maxScore) * 100).toFixed(0);
-              
-              let gradientClass = 'bg-gradient-to-r from-green-500 to-green-600';
-              if (module.color === 'blue') {
-                gradientClass = 'bg-gradient-to-r from-blue-500 to-blue-600';
-              } else if (module.color === 'red') {
-                gradientClass = 'bg-gradient-to-r from-red-500 to-red-600';
-              }
-              
-              return (
-                <div 
-                  key={idx} 
-                  className="bg-white rounded-2xl shadow-sm border border-green-100 p-5"
-                  data-testid={`analytics-module-${idx}`}
-                >
-                  <div className="flex justify-between items-center mb-3">
-                    <h3 className="font-bold text-gray-900" style={{ fontFamily: 'Manrope, sans-serif' }}>
-                      {module.name}
-                    </h3>
-                    <div className="flex items-center gap-2">
-                      <span className="text-2xl font-bold text-green-700" style={{ fontFamily: 'Manrope, sans-serif' }}>
-                        {module.score}
-                      </span>
-                      <span className="text-sm text-gray-600" style={{ fontFamily: 'Inter, sans-serif' }}>
-                        / {module.maxScore}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="h-3 rounded-full bg-green-100 overflow-hidden">
-                    <div 
-                      className={`h-full transition-all duration-500 ${gradientClass}`}
-                      style={{ width: `${percentage}%` }}
-                    ></div>
-                  </div>
-                  <div className="flex justify-between items-center mt-2">
-                    <span className="text-xs text-gray-600" style={{ fontFamily: 'Inter, sans-serif' }}>
-                      {percentage}% Complete
-                    </span>
-                    {percentage < 100 && (
-                      <span className="text-xs text-amber-600 font-medium" style={{ fontFamily: 'Inter, sans-serif' }}>
-                        Keep learning!
-                      </span>
-                    )}
-                    {percentage == 100 && (
-                      <span className="text-xs text-green-600 font-medium" style={{ fontFamily: 'Inter, sans-serif' }}>
-                        ✓ Mastered
-                      </span>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
+            <ModuleProgress module={modules[0]} idx={0} />
+            <ModuleProgress module={modules[1]} idx={1} />
+            <ModuleProgress module={modules[2]} idx={2} />
           </div>
         </div>
 
