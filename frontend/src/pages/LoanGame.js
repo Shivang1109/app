@@ -4,6 +4,69 @@ import { updateScore } from '../utils/localStorage';
 import { toast } from 'sonner';
 import { ArrowLeft, Building2, Landmark, TrendingDown } from 'lucide-react';
 
+function LoanOption({ option, isSelected, showResult, onSelect }) {
+  const Icon = option.icon;
+  const showFeedback = showResult && isSelected;
+  
+  let borderClass = isSelected ? 'border-green-500 shadow-md' : 'border-green-100 hover:border-green-300 hover:shadow-md';
+  
+  let iconBgClass = 'bg-red-100';
+  let iconColorClass = 'text-red-700';
+  if (option.color === 'green') {
+    iconBgClass = 'bg-green-100';
+    iconColorClass = 'text-green-700';
+  } else if (option.color === 'blue') {
+    iconBgClass = 'bg-blue-100';
+    iconColorClass = 'text-blue-700';
+  }
+  
+  let feedbackBgClass = option.points > 0 ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200';
+  let feedbackTextClass = option.points > 0 ? 'text-green-900' : 'text-red-900';
+  
+  return (
+    <div
+      onClick={onSelect}
+      className={`bg-white rounded-2xl shadow-sm border-2 p-5 cursor-pointer transition-all duration-200 ${borderClass}`}
+      data-testid={`loan-option-${option.id}`}
+    >
+      <div className="flex items-start gap-4">
+        <div className={`p-3 rounded-xl flex-shrink-0 ${iconBgClass}`}>
+          <Icon className={`w-6 h-6 ${iconColorClass}`} strokeWidth={2} />
+        </div>
+        <div className="flex-1">
+          <h3 className="text-lg font-bold text-green-900 mb-1" style={{ fontFamily: 'Manrope, sans-serif' }}>
+            {option.title}
+          </h3>
+          <p className="text-amber-700 font-bold text-sm mb-2" style={{ fontFamily: 'Inter, sans-serif' }}>
+            Interest: {option.interest}
+          </p>
+          <ul className="space-y-1 mb-3">
+            <li className="text-gray-600 text-sm flex items-center gap-2" style={{ fontFamily: 'Inter, sans-serif' }}>
+              <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+              {option.features[0]}
+            </li>
+            <li className="text-gray-600 text-sm flex items-center gap-2" style={{ fontFamily: 'Inter, sans-serif' }}>
+              <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+              {option.features[1]}
+            </li>
+            <li className="text-gray-600 text-sm flex items-center gap-2" style={{ fontFamily: 'Inter, sans-serif' }}>
+              <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+              {option.features[2]}
+            </li>
+          </ul>
+          {showFeedback && (
+            <div className={`mt-3 p-3 rounded-xl ${feedbackBgClass}`}>
+              <p className={`text-sm font-medium ${feedbackTextClass}`} style={{ fontFamily: 'Inter, sans-serif' }}>
+                {option.feedback}
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function LoanGame() {
   const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState(null);
