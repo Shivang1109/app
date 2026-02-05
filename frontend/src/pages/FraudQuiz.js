@@ -4,6 +4,51 @@ import { updateScore } from '../utils/localStorage';
 import { toast } from 'sonner';
 import { ArrowLeft, Shield, Check, X } from 'lucide-react';
 
+function QuizOption({ option, isSelected, showResult, onSelect }) {
+  const showCorrect = showResult && option.correct;
+  const showIncorrect = showResult && isSelected && !option.correct;
+  
+  let borderClass = 'border-green-100 hover:border-green-300 hover:shadow-md';
+  let bgClass = 'bg-white';
+  if (showCorrect) {
+    borderClass = 'border-green-500';
+    bgClass = 'bg-green-50';
+  } else if (showIncorrect) {
+    borderClass = 'border-red-500';
+    bgClass = 'bg-red-50';
+  } else if (isSelected) {
+    borderClass = 'border-green-500 shadow-md';
+  }
+  
+  let circleClass = 'bg-green-100 text-green-700';
+  if (showCorrect) {
+    circleClass = 'bg-green-500 text-white';
+  } else if (showIncorrect) {
+    circleClass = 'bg-red-500 text-white';
+  } else if (isSelected) {
+    circleClass = 'bg-green-700 text-white';
+  }
+  
+  return (
+    <div
+      onClick={onSelect}
+      className={`${bgClass} rounded-2xl shadow-sm border-2 p-4 cursor-pointer transition-all duration-200 ${borderClass}`}
+      data-testid={`quiz-option-${option.id}`}
+    >
+      <div className="flex items-center gap-3">
+        <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-bold ${circleClass}`} style={{ fontFamily: 'Manrope, sans-serif' }}>
+          {showCorrect ? <Check className="w-5 h-5" strokeWidth={3} /> :
+           showIncorrect ? <X className="w-5 h-5" strokeWidth={3} /> :
+           option.id.toUpperCase()}
+        </div>
+        <p className="flex-1 text-gray-900" style={{ fontFamily: 'Inter, sans-serif' }}>
+          {option.text}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 export default function FraudQuiz() {
   const navigate = useNavigate();
   const [currentQuestion, setCurrentQuestion] = useState(0);
